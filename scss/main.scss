@@ -1,5 +1,6 @@
 @import "config";
 @import "menu";
+@import "responsive";
 
 * {
   box-sizing: border-box;
@@ -61,7 +62,7 @@ header {
 }
 
 main {
-  padding: 4rem;
+  padding: 2rem;
   height: 100%;
 
   .icons {
@@ -77,9 +78,7 @@ main {
 
   &#home {
     overflow: hidden;
-    h1 {
-      margin-top: 10vh;
-    }
+
     &.blur {
       @include easeOut;
       filter: blur(2px);

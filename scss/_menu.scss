@@ -73,7 +73,7 @@
 
   &-branding {
     transform: translate3d(0, -100%, 0);
-
+    background: $primary-color;
     .portrait {
       width: 250px;
       height: 250px;
