@@ -1,37 +1,129 @@
 //Menu Button
-.menu-btn{
-    position: absolute;
-    z-index: 3;
-    right: 35px;
-    top: 35px;
-    cursor: pointer;
+.menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  @include easeOut;
+
+  .btn-line {
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px 0;
+    background: #fff;
     @include easeOut;
+  }
 
-    .btn-line{
-        width: 28px;
-        height: 3px;
-        margin: 0 0 5px 0;
-        background: #fff;
-        @include easeOut;
+  // Rotate Into X With Menu Lines
+  &.close {
+    transform: rotate(180deg);
+
+    .btn-line {
+      // Line 1 - Rotate
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(-6px, 7px);
+      }
+    }
+  }
+}
+
+// Menu Overlay
+.menu {
+  width: 100%;
+  top: 0;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0.9;
+  &.show {
+    visibility: visible;
+  }
+
+  &-branding,
+  &-nav {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+    float: left;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    @include easeOut;
+  }
+
+  &-nav {
+    margin: 0;
+    padding: 0;
+    background: darken($primary-color, 5);
+    list-style: none;
+    transform: translate3d(0, 100%, 0);
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &-branding {
+    transform: translate3d(0, -100%, 0);
+
+    .portrait {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 3px solid $secondary-color;
+
+      .img {
+        background: url("../../img/portrait2.jpeg");
+        border-radius: 50%;
+        width: 245px;
+        height: 245px;
+        background-size: cover;
+        -webkit-filter: grayscale(0.8);
+      }
     }
 
-    // Rotate Into X With Menu Lines
-    &.close {
-        transform: rotate(180deg);
-
-        .btn-line{
-            // Line 1 - Rotate
-            &:nth-child(1){
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            &:nth-child(2){
-                opacity: 0;
-            }
-            
-            &:nth-child(3){
-                transform: rotate(-45deg) translate(-6px, 7px)
-            }
-        }
+    &.show {
+      transform: translate3d(0, 0, 0);
     }
+  }
+}
+
+// nav-item slide effect
+.nav-item {
+  @include easeOut;
+  transform: translate3d(600px, 0, 0);
+
+  &.show {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  font-weight: 300;
+  color: #fff;
+  @include easeOut;
+
+  &:hover {
+    color: $secondary-color;
+  }
+  &.current {
+    color: $secondary-color;
+  }
+}
+
+@for $x from 1 through 4 {
+  .nav-item:nth-child(#{$x}) {
+    transition-delay: $x * 0.1s;
+  }
 }
