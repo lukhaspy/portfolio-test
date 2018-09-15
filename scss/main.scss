@@ -1,6 +1,5 @@
 @import "config";
 @import "menu";
-@import "responsive";
 
 * {
   box-sizing: border-box;
@@ -24,8 +23,8 @@ h3 {
 
   &.lg-heading {
     font-size: 6rem;
+    margin: 0 0 1rem 0;
   }
-
   &.sm-heading {
     margin-bottom: 2rem;
     padding: 0.2rem 1rem;
@@ -62,9 +61,13 @@ header {
 }
 
 main {
-  padding: 2rem;
-  height: 100%;
+  padding: 1.5rem;
+  min-height: calc(100vh - 60px);
 
+  &.blur {
+    @include easeOut;
+    filter: blur(2px);
+  }
   .icons {
     margin-top: 1rem;
     a {
@@ -79,9 +82,119 @@ main {
   &#home {
     overflow: hidden;
 
-    &.blur {
-      @include easeOut;
-      filter: blur(2px);
+    .lg-heading {
+      margin-top: 20vh;
     }
   }
 }
+
+// About Me
+main#about {
+  .lg-heading {
+    font-size: 6rem;
+  }
+}
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bioimage bio bio"
+    "job1 job2 job3";
+  grid-template-columns: repeat(3, 1fr);
+
+  .img {
+    margin: auto;
+    grid-area: bioimage;
+    border-radius: 50%;
+    width: 250px;
+    border: 3px solid $secondary-color;
+  }
+
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+
+  .job-1 {
+    grid-area: job1;
+  }
+  .job-2 {
+    grid-area: job2;
+  }
+  .job-3 {
+    grid-area: job3;
+  }
+
+  .job {
+    background: darken($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: 3px solid $secondary-color;
+  }
+}
+
+// Work/Projects
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+  img {
+    width: 100%;
+    border: 3px solid #fff;
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+
+// Button Styles
+.btn-light {
+  width: 100%;
+  background: darken(#fff, 50);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: #fff;
+  }
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2rem;
+
+  div {
+    color: #fff;
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    @include easeOut;
+
+    &:hover {
+      color: rgb(0, 0, 0);
+      padding: 0.5rem 1.5rem;
+      background: darken($primary-color, 5);
+
+      span {
+        color: #fff;
+      }
+    }
+  }
+}
+
+#main-footer {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  background: darken($primary-color, 5);
+  padding: 1rem;
+}
+
+@import "responsive";

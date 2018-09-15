@@ -1,5 +1,5 @@
 // Select DOM Items
-const home = document.querySelector("#home");
+const main = document.querySelector("main");
 const menuBtn = document.querySelector(".menu-btn");
 const menu = document.querySelector(".menu");
 const menuNav = document.querySelector(".menu-nav");
@@ -13,7 +13,7 @@ menuBtn.addEventListener("click", toggleMenu);
 
 function toggleMenu() {
   if (!showMenu) {
-    home.classList.add("blur");
+    main.classList.add("blur");
     menuBtn.classList.add("close");
     menu.classList.add("show");
     menuNav.classList.add("show");
@@ -23,7 +23,7 @@ function toggleMenu() {
     // Set Menu State
     showMenu = true;
   } else {
-    home.classList.remove("blur");
+    main.classList.remove("blur");
     menuBtn.classList.remove("close");
     menu.classList.remove("show");
     menuNav.classList.remove("show");
