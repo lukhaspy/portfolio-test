@@ -22,6 +22,9 @@ $background-opacity: 0.9;
         height: 100%;
         z-index: -1;
         background: rgba($primary-color, $background-opacity);
+
+        position: fixed;
+        border-bottom: 1px solid $primary-color;
       }
     }
   }
